@@ -1,0 +1,13 @@
+
+target/
+.idea/
+.settings/
+.mvn/
+*.iws
+*.iml
+*.ipr
+*.travis.yml
+*.cmd
+mvnw
+.cmd
+LICENSE
