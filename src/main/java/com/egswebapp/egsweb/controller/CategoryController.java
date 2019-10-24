@@ -45,7 +45,7 @@ public class CategoryController {
     }
 
 
-    @PostMapping(value = "create_category")
+    @PostMapping(value = "/create")
     @ResponseBody
     @ApiOperation(value = "save category")
     public ResponseEntity<SuccessResponse> save(@RequestBody @Valid final CategoryRequestDto dto, final BindingResult result, @CurrentUser final JwtUserDetails currentUser) {
@@ -83,7 +83,7 @@ public class CategoryController {
         return ResponseEntity.ok(new SuccessResponse(true));
     }
 
-    @GetMapping("category_list")
+    @GetMapping("/categories")
     public List<Category> getAllCategory() {
         return service.getAllCategory();
     }

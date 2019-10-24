@@ -23,7 +23,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE}, path = "/pages")
+@RequestMapping(produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE}, path = "/page")
 @Slf4j
 @Api(value = "PageController Resource, functionality for page ", description = "shows page functionality")
 public class PageController {
@@ -38,7 +38,7 @@ public class PageController {
     }
 
 
-    @PostMapping(value = "/create_page", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @PostMapping(value = "/create", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     @ApiOperation(value = "save page")
     public ResponseEntity<SuccessResponse> save(@Valid @ModelAttribute final PageRequestDto dto,
                                                 final BindingResult bindingResult,
@@ -51,7 +51,7 @@ public class PageController {
         return ResponseEntity.ok(new SuccessResponse(true));
     }
 
-    @GetMapping(value = "/all_page")
+    @GetMapping(value = "/pages")
     @ApiOperation(value = "get all page")
     public List<PageResponseDto> getAllPage() {
         log.info("get all page");
@@ -68,6 +68,7 @@ public class PageController {
         return ResponseEntity.ok(new SuccessResponse(true));
     }
 
+
     @DeleteMapping(value = "/delete")
     @ApiOperation(value = "delete page ")
     public ResponseEntity<SuccessResponse> delete(@Valid @RequestBody final PageDeleteRequestDto dto,
@@ -77,6 +78,4 @@ public class PageController {
         pageService.delete(dto);
         return ResponseEntity.ok(new SuccessResponse(true));
     }
-
-
 }

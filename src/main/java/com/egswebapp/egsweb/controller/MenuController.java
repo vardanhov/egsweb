@@ -37,7 +37,7 @@ public class MenuController {
      */
 
 
-    @GetMapping("/getAll")
+    @GetMapping("/menus")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @ApiOperation(value = "Get all menu ")
     public ResponseEntity<?> getAllMenu() {

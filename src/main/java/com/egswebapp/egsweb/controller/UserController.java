@@ -40,7 +40,7 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE, path = "/users")
+@RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE, path = "/user")
 @Slf4j
 @Api(value = "UserController Resource, functionality for user ", description = "shows user functionality")
 public class UserController {
@@ -132,7 +132,7 @@ public class UserController {
      * @param currentUser it shows that have an admin otr user in the login
      */
     @ApiOperation(value = "change password after login: user or admin can change password:")
-    @PatchMapping(path = "/update_password")
+    @PatchMapping(path = "/update-password")
     @ResponseBody
     public ResponseEntity<SuccessResponse> updatePassword(@RequestBody @Valid final UserPasswordDto dto, final BindingResult result, @CurrentUser JwtUserDetails currentUser) {
         log.info("trying to change user password");
@@ -142,7 +142,7 @@ public class UserController {
     }
 
     @ApiOperation(value = "get user data ")
-    @GetMapping("/update_user_data/{id}")
+    @GetMapping("/update-user-data/{id}")
     public UserResponseDto getUserDate(@PathVariable(name = "id") final String id) {
         return userService.findUserById(id);
     }
@@ -158,7 +158,7 @@ public class UserController {
     @ApiOperation(value = "update user data by id  @param dto Map{@link UserUpdateDto} to {@link com.egswebapp.egsweb.model.User}" +
             "@param result checked if update users fields is not empty" +
             "@param  id   user id")
-    @PutMapping("/update_user_data/{id}")
+    @PutMapping("/update-user-data/{id}")
     @ResponseBody
     public ResponseEntity<SuccessResponse> updateUserData(@Valid @RequestBody final UserUpdateDto dto, final BindingResult result, @PathVariable(name = "id") String id) {
         log.info("trying to update user data");
@@ -171,22 +171,22 @@ public class UserController {
     /**
      * get all user
      */
-    @ApiOperation(value = "get_all_user")
-    @GetMapping("/all_user")
+    @ApiOperation(value = "get all user")
+    @GetMapping("/users")
     @ResponseBody
     public List<UserResponseDto> getAllUser() {
         return userService.getAllUser();
     }
 
 
-    @PostMapping("/upload_pictures")
+    @PostMapping("/upload-pictures")
     @ApiOperation(value = "upload user avatar pictures")
     public ResponseEntity<SuccessResponse> fileUpload(@CurrentUser JwtUserDetails currentUser, @RequestParam(name = "file") final MultipartFile file) {
         userService.addFile(currentUser.getId(), file);
         return ResponseEntity.ok(new SuccessResponse(true));
     }
 
-    @PostMapping("/delete_pictures")
+    @PostMapping("/delete-pictures")
     public ResponseEntity<SuccessResponse> deleteFile(@CurrentUser final JwtUserDetails userDetails) {
         userService.delete(userDetails.getId());
         return ResponseEntity.ok(new SuccessResponse(true));

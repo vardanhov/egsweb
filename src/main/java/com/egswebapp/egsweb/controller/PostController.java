@@ -24,7 +24,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "/posts", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(path = "/post", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 @Api(value = "PostController Resource, functionality for user ", description = "shows post functionality")
 @Slf4j
 public class PostController {
@@ -41,7 +41,7 @@ public class PostController {
      * Get all Posts with PostContent
      */
 
-    @GetMapping("/getAll")
+    @GetMapping("/posts")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @ApiOperation(value = "Get all Posts with PostContent")
     public ResponseEntity<?> getAllPosts() {
@@ -74,7 +74,7 @@ public class PostController {
      * @param currentUser the {@Link currentUser}
      * @param uploadingFiles        the {@Link uploadingFiles}
      */
-    @PostMapping("/addPost")
+    @PostMapping("/create")
     @PreAuthorize("hasRole('ROLE_USER')")
     @ApiOperation(value = "Add Post with PostContent")
     public ResponseEntity<ApiResponse> addPost(@Valid @ModelAttribute PostRequestDto postRequest, @CurrentUser JwtUserDetails currentUser, @RequestParam("file") MultipartFile[] uploadingFiles) {

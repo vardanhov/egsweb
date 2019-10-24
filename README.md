@@ -34,25 +34,64 @@ The app defines following CRUD APIs.
 
 ### Admin
 
-| Method | Url | Decription | Sample Valid Request Body | 
+| Method | Url | Decryption | Sample Valid Request Body | 
 | ------ | --- | ---------- | --------------------------- |
-| POST   | /activateUser | Activate user |  |
-| POST   | /createUser | Create user |  |
+| PUT   | /admin/activate/{id} | Activate user |  |
+| PUT   | /admin/update | Update role  |  |
 
 ### User
 
 | Method | Url | Description | Sample Valid Request Body |
 | ------ | --- | ----------- | ------------------------- |
-| POST    | /login | Log in  user profile | |
-| POST    | /register | Registration | |
+| POST    | /user/login | Log in  user profile | |
+| POST    | /user/register | Registration | |
+| PATCH    | /user/update-password | Change password after login | |
+| PUT    | /user//update-user-data/{id} | Update user data by id | |
+| GET    | /user/users | Get all user | |
+| POST    | /user/upload-pictures | Upload user avatar pictures | |
+| POST    | /user/delete-pictures | Delete picture | |
+| POST    | /user/change-password | Change password| |
+
 
 ### Post
 
 | Method | Url | Description | Sample Valid Request Body |
 | ------ | --- | ----------- | ------------------------- |
-| GET    | /posts/getAll | Get all posts | |
-| GET    | /posts/category/{id} | Get posts by category id | |
-| POST    | /posts/addPost | Add Post | |
-| PUT    | /posts/update/{id} | Update post | |
-| GET    | /posts/getById/{id} | Get post by id | |
-| DELETE    | /posts/delete/{id} | Delete post by id | |
+| GET    | /post/posts | Get all posts | |
+| GET    | /post/category/{id} | Get post by category id | |
+| POST    | /post/create | Add Post | |
+| PUT    | /post/update/{id} | Update post | |
+| GET    | /post/getById/{id} | Get post by id | |
+| DELETE    | /post/delete/{id} | Delete post by id | |
+
+
+### Category
+
+| Method | Url | Description | Sample Valid Request Body |
+| ------ | --- | ----------- | ------------------------- |
+| GET    | /category/categories | Get all categories | |
+| POST    | /category/create | Add category | |
+| PUT    | /category/rename/{id} | Rename category | |
+| PUT    | /category/delete/{id} | Delete category by id | |
+
+
+### Menu
+
+| Method | Url | Description | Sample Valid Request Body |
+| ------ | --- | ----------- | ------------------------- |
+| GET    | /menu/menus | Get all menus | |
+| POST    | /menu/create | Add menu | |
+| PUT    | /menu/update/{id} | Update menu | |
+| GET    | /menu/getById/{id} | Get menu by id | |
+| DELETE    | /menu/delete/{id} | Delete menu by id | |
+
+
+### Page
+
+| Method | Url | Description | Sample Valid Request Body |
+| ------ | --- | ----------- | ------------------------- |
+| GET    | /page/pages | Get all pages | |
+| POST    | /page/create | Add page | |
+| PUT    | /page/update/{id} | Update page | |
+| DELETE    | /page/delete/{id} | Delete page by id | |
+

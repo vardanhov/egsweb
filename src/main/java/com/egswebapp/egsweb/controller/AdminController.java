@@ -37,7 +37,7 @@ public class AdminController {
      *
      * @param id the {@Link id} id of user
      */
-    @PutMapping(path = "/activateUser/{id}")
+    @PutMapping(path = "/activate/{id}")
     @ApiOperation(value = "activate user")
     public ResponseEntity<SuccessResponse> activateUser(@PathVariable(name = "id") final String id) {
         log.info("trying to activate user");
@@ -54,7 +54,7 @@ public class AdminController {
      * @param result the{@link BindingResult}
      */
     @ApiOperation(value = "Admin can update user role, give him  admin permission or user permission")
-    @PutMapping(value = "/update_role")
+    @PutMapping(value = "/update")
     public ResponseEntity<SuccessResponse> updateUserRole(@RequestBody @Valid final UserUpdateRoleDto dto, final BindingResult result) {
         log.info("trying to update user role type");
         validator.validateBodyFields(result);
